@@ -1,7 +1,10 @@
 
 var apiKey = "9245a40f3fa9510a8e08caac843d31d3";
 var searchButton = document.querySelector("#searchBtn");
+const currentDate = dayjs();
 
+
+$("#cityNameDate").text(currentDate.format("MMMM DD,YYYY HH:mm A"));
 
 
 $("#searchBtn").on("click", searchCity);
@@ -12,7 +15,7 @@ $("#searchBtn").on("click", searchCity);
         getCityName(userValue);
         localStorage.setItem(userInput, userValue);
         console.log("search");
-    }
+    };
 
 
 
