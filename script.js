@@ -43,10 +43,11 @@ function getCityName(cityName) {
             return res.json()  
         }).then((json) => {
             console.log(json);
-            document.querySelector("#temp").innerHTML = json.list[0].main.temp;
-            document.querySelector("#humidity").innerHTML = json.main.temp;
-            document.querySelector("#windSpeed").innerHTML = json.weather[0].description;
-            document.querySelector("#uv").innerHTML = json.wind.speed;
+            document.querySelector("#cityNameDate").innerHTML = "City: " + json.city.name + "  " +  (currentDate.format("MMMM DD,YYYY HH:mm A"));
+            document.querySelector("#temp").innerHTML = "Temperature: " + json.list[0].main.temp + "\xB0";
+            document.querySelector("#humidity").innerHTML = "Humidity: " + json.list[0].main.humidity;
+            document.querySelector("#windSpeed").innerHTML = "Wind Speed: " +  json.list[0].wind.speed + " MPH ";
+            document.querySelector("#weather").innerHTML = "Description: " + json.list[0].weather[0].description;
         })
         .catch((err) => {
             console.log(err.message);
@@ -54,4 +55,9 @@ function getCityName(cityName) {
 
  };
 
+//  function fiveDay(lat, lon) {
+//      var apiPath =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+      
+// }
+// fiveDay();
  
