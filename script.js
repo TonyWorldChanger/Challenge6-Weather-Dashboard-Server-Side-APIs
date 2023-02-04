@@ -38,11 +38,15 @@ function getCityName(cityName) {
 
 
  function getweather(lat, lon) {
-    var apiPath =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    var apiPath =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
         fetch(apiPath).then((res) => {
             return res.json()  
         }).then((json) => {
             console.log(json);
+            document.querySelector("#temp").innerHTML = json.list[0].main.temp;
+            document.querySelector("#humidity").innerHTML = json.main.temp;
+            document.querySelector("#windSpeed").innerHTML = json.weather[0].description;
+            document.querySelector("#uv").innerHTML = json.wind.speed;
         })
         .catch((err) => {
             console.log(err.message);
