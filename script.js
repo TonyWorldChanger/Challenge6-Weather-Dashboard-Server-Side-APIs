@@ -4,6 +4,7 @@ var searchButton = document.querySelector("#searchBtn");
 const currentDate = dayjs();
 
 
+
 $("#cityNameDate").text(currentDate.format("MMMM DD,YYYY HH:mm A"));
 
 
@@ -43,7 +44,7 @@ function getCityName(cityName) {
             return res.json()  
         }).then((json) => {
             console.log(json);
-            document.querySelector("#cityNameDate").innerHTML = "City: " + json.city.name + "  " +  (currentDate.format("MMMM DD,YYYY HH:mm A"));
+            document.querySelector("#cityNameDate").innerHTML = "City: " + json.city.name + "  " +  (currentDate.format("MM/DD/YYYY"));
             document.querySelector("#temp").innerHTML = "Temperature: " + json.list[0].main.temp + "\xB0";
             document.querySelector("#humidity").innerHTML = "Humidity: " + json.list[0].main.humidity;
             document.querySelector("#windSpeed").innerHTML = "Wind Speed: " +  json.list[0].wind.speed + " MPH ";
@@ -55,9 +56,17 @@ function getCityName(cityName) {
 
  };
 
-//  function fiveDay(lat, lon) {
-//      var apiPath =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-      
-// }
-// fiveDay();
- 
+
+
+function fiveDayForcast(lat, lon) {
+    var apiPath =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+        fetch(apiPath).then((res) => {
+            return res.json()
+        }).then((json) => {
+            console.log(json);
+           
+
+            
+        });
+        
+}
