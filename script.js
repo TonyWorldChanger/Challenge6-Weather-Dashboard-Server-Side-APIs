@@ -20,8 +20,6 @@ $("#searchBtn").on("click", searchCity);
     };
 
 
-
-
 function getCityName(cityName) {
     var apiPath = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`;
       fetch(apiPath).then((res) => {
@@ -69,31 +67,20 @@ function fiveDayForecast(lat, lon) {
             var row = document.querySelector('.weather.row');
             //clear out the old weather and add the new
             // row.innerHTML = '';
-            row.innerHTML = res.daily
-              .map((day, idx) => {
+            row.innerHTML = json.list .map((day, idx) => {
                 if (idx <= 5) {
-                  let dt = new Date(json.list[0].clouds.dt * 1000); //timestamp * 1000
-                  let sr = new Date(json.city.sunrise * 1000).toTimeString();
-                  let ss = new Date(json.city.sunset * 1000).toTimeString();
+                  let dt = new Date(json.list[idx].clouds.dt * 1000); //timestamp * 1000
                   return `<div class="col">
                       <div class="card">
                       <h5 class="card-title p-2">${dt.toDateString()}</h5>
                         <img
-                          src="http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png"
+                          src="http://openweathermap.org/img/wn/${json.list[idx].weather[0].icon}@2x.png"
                           class="card-img-top"
-                          alt="${json.list[0].weather[0].description}"/>
+                          alt="${json.list[idx].weather[0].description}"/>
                         <div class="card-body">
-                          <h3 class="card-title">${json.list[0].weather[0].main}</h3>
-                          <p class="card-text">High ${json.list[0].main.temp_max}&deg;F Low ${day.temp_min}&deg;F</p>
-                          <p class="card-text">High Feels like ${day.feels_like.day}&deg;F</p>
-                          <p class="card-text">Pressure ${day.pressure}mb</p>
-                          <p class="card-text">Humidity ${day.humidity}%</p>
-                          <p class="card-text">UV Index ${day.uvi}</p>
-                          <p class="card-text">Precipitation ${day.pop * 100}%</p>
-                          <p class="card-text">Dewpoint ${day.dew_point}</p>
-                          <p class="card-text">Wind ${day.wind_speed}m/s, ${day.wind_deg}&deg;</p>
-                          <p class="card-text">Sunrise ${sr}</p>
-                          <p class="card-text">Sunset ${ss}</p>
+                          <h3 class="card-title">${json.list[idx].weather[0].main}</h3>
+                          <p class="card-text">High ${json.list[idx].main.temp_max}&deg;F Low ${json.list[idx].main.temp_min}&deg;F</p>
+                          <p class="card-text">High Feels like ${json.list[idx].main.feels_like}&deg;F</p>
                         </div>
                       </div>
                     </div>
@@ -101,10 +88,10 @@ function fiveDayForecast(lat, lon) {
                 }
               })
               .join(' ');
-            })
+        })
         
-            .catch((err) => {
-            console.log(err.message);
-            })
+        .catch((err) => {
+            console.log(err);    
+        })
         
-}
+};
