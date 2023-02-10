@@ -24,12 +24,12 @@ No installation required
 
 ## Usage
 
-[Github Page Address]()
+[Github Page Address](https://tonyworldchanger.github.io/Challenge6-Weather-Dashboard-Server-Side-APIs/)
 
  The scheduler will by typing anything in the time slots that the user needs to do for the day. Once complete, pressing the "save icon" button will save the information to your local storage. This will stay on the scheduler until deleted. The date at the top will stay current with the current day, date, and time. 
 
 ### ScreenShot of Challenge
-![Challenge6]()
+![Challenge6](assets/Challeng6-WeatherDashboard.PNG)
 
 
 
