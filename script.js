@@ -67,12 +67,10 @@ function fiveDayForecast(lat, lon) {
             var row = document.querySelector('.weather.row');
             //clear out the old weather and add the new
             // row.innerHTML = '';
-            row.innerHTML = json.list .map((day, idx) => {
+            row.innerHTML = json.list.map((list, idx) => {
                 if (idx <= 5) {
-                  let dt = new Date(json.list[idx].clouds.dt * 1000); //timestamp * 1000
                   return `<div class="col">
                       <div class="card">
-                      <h5 class="card-title p-2">${dt.toDateString()}</h5>
                         <img
                           src="http://openweathermap.org/img/wn/${json.list[idx].weather[0].icon}@2x.png"
                           class="card-img-top"
@@ -87,7 +85,7 @@ function fiveDayForecast(lat, lon) {
                   </div>`;
                 }
               })
-              .join(' ');
+            
         })
         
         .catch((err) => {
